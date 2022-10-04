@@ -55,6 +55,17 @@ func RunShell(dbPath, logPath string) error {
 			return err
 		}
 
+		cmd = strings.TrimSpace(cmd)
+		if cmd == "" {
+			continue
+		}
+
+		if cmd == "\\c" {
+			cmdLines = cmdLines[:0]
+			isMultiLines = false
+			continue
+		}
+
 		if !strings.HasPrefix(cmd, ".") && !strings.HasSuffix(cmd, ";") {
 			cmdLines = append(cmdLines, cmd)
 			isMultiLines = true
@@ -66,11 +77,6 @@ func RunShell(dbPath, logPath string) error {
 			cmd = strings.Join(cmdLines, " ")
 			cmdLines = cmdLines[:0]
 			isMultiLines = false
-		}
-
-		cmd = strings.TrimSpace(cmd)
-		if cmd == "" {
-			continue
 		}
 
 		if err = processCmd(cmd, commandEnv); errors.Is(err, common.ErrExit) {
