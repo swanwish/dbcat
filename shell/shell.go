@@ -43,9 +43,9 @@ func RunShell(dbPath, logPath string) error {
 	cmdLines := make([]string, 0)
 	isMultiLines := false
 	for {
-		prompt := fmt.Sprintf("%s > ", common.AppName)
+		prompt := fmt.Sprintf("%s> ", common.AppName)
 		if isMultiLines {
-			prompt = fmt.Sprintf("%*s > ", len(common.AppName), "...")
+			prompt = fmt.Sprintf("%*s> ", len(common.AppName), "...")
 		}
 		cmd, err := line.Prompt(prompt)
 		if err != nil {
