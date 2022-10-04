@@ -4,7 +4,6 @@ import (
 	"os"
 	"runtime"
 
-	_ "github.com/mattn/go-sqlite3"
 	"github.com/swanwish/dbcat/cmd"
 	"github.com/swanwish/go-common/logs"
 	"github.com/urfave/cli/v2"

@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/jmoiron/sqlx"
+	_ "github.com/mattn/go-sqlite3"
 	"github.com/peterh/liner"
 	"github.com/swanwish/dbcat/common"
 	"github.com/swanwish/go-common/logs"
