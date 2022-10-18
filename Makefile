@@ -13,3 +13,5 @@ arm64-build:
 mac-build:
 	@echo "build ${appName} for mac"
 	@go build -o ${appName}_mac main.go
+
+build: amd64-build arm64-build mac-build
