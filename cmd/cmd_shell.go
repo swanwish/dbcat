@@ -25,8 +25,13 @@ var (
 func shellAction(c *cli.Context) error {
 	dbPath := c.String("dbPath")
 	if dbPath == "" {
-		logs.Errorf("The dbPath does not specified")
-		return common.ErrInvalidParameter
+		args := c.Args()
+		if args.Len() == 1 {
+			dbPath = args.First()
+		} else {
+			logs.Errorf("The dbPath does not specified")
+			return common.ErrInvalidParameter
+		}
 	}
 	logPath := c.String("logPath")
 	return shell.RunShell(dbPath, logPath)
