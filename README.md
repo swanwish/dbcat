@@ -9,6 +9,9 @@ dbcat shell -dbPath=<sqlite db path>
 
 # or ignore shell
 dbcat -dbPath=<sqlite db path>
+
+# ignore -dbPath
+dbcat <sqlite db path>
 ```
 
 ## Show tables
